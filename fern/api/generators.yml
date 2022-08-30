@@ -1,1 +1,19 @@
-generators: []
+draft: # Publishes the generated code to a private registry managed by Fern.
+  - name: fernapi/typescript-client
+    version: 0.0.189
+  - name: fernapi/java-client
+    version: 0.0.109
+  - name: fernapi/java-model
+    version: 0.0.109
+  - name: fernapi/java-server
+    version: 0.0.109
+
+release: # Publishes the generated code to a public registry.
+  - name: fernapi/java-client
+    version: 0.0.109
+    outputs:
+      maven:
+        url: https://s01.oss.sonatype.org/content/repositories/releases/
+        coordinate: <maven-group:maven-artifact>
+        username: ${MAVEN_USERNAME} # .env variable
+        password: ${MAVEN_PASSWORD}
