@@ -1,3 +1,3 @@
 # Fern Example Repo
 
-The purpose of this repo is to serve as a reference for the Fern documentation website.
+This repo provides examples referenced in Fern's documentation website.
