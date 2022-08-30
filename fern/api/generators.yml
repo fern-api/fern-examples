@@ -1,6 +1,8 @@
 draft: # Publishes the generated code to a private registry managed by Fern.
-  - name: fernapi/typescript-client
-    version: 0.0.189
+  - name: fernapi/fern-typescript
+    version: 0.0.197
+    config:
+      mode: client
   - name: fernapi/java-client
     version: 0.0.109
   - name: fernapi/java-model
