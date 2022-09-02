@@ -1,17 +1,11 @@
 draft: # Publishes the generated code to a private registry managed by Fern.
-  - name: fernapi/fern-typescript
+  - name: fernapi/javascript-sdk
     version: 0.0.197
-    config:
-      mode: client
-  - name: fernapi/java-client
-    version: 0.0.109
-  - name: fernapi/java-model
-    version: 0.0.109
-  - name: fernapi/java-server
+  - name: fernapi/java-spring-server
     version: 0.0.109
 
 release: # Publishes the generated code to a public registry.
-  - name: fernapi/java-client
+  - name: fernapi/java-sdk
     version: 0.0.109
     outputs:
       maven:
