@@ -1,48 +1,52 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
 
-imports:
-  commons: commons.yml
-
-types:
-  Movie:
-    properties:
-      id: commons.MovieId # We are referencing a type (MovieId) defined in another file (commons.yml). 
-      title: string
-      rating: 
-        type: double
-        docs: The rating scale is one to five stars
-
-  CreateMovieRequest: 
-    properties:
-      title: string
-      rating: double 
-
 services:
   http:
-  
     MoviesService:
       auth: false
       base-path: /movies
       endpoints:
-
-        # Here's an HTTP endpoint
         createMovie:
           docs: Add a movie to the database
           method: POST
           path: /create-movie
           request: CreateMovieRequest
-          response: commons.MovieId
+          response: MovieId
 
         getMovie:
           method: GET
           path: /{movieId}
           path-parameters:
-            movieId: commons.MovieId
+            movieId: MovieId
           response: Movie
           errors:
             - NotFoundError
+            - UnauthorizedError
+
+types:
+  Movie:
+    properties:
+      title: string
+      rating:
+        type: double
+        docs: The rating scale from one to five stars
+      id:
+        type: MovieId
+        docs: The unique identifier for a movie
+
+  CreateMovieRequest:
+    properties:
+      title: string
+      rating: double
 
 errors:
   NotFoundError:
     http:
       statusCode: 404
+    type:
+      properties:
+        id: MovieId
+
+  UnauthorizedError:
+    http:
+      statusCode: 401

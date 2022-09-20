@@ -1,6 +1,0 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fern-api/fern/main/fern.schema.json
-
-# Tip: Use a commons.yml file when sharing types or errors between files in your Fern Definition.
-
-types: 
-  MovieId: string
