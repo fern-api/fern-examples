@@ -1,24 +1,27 @@
-draft: # Publishes the generated code to a private registry managed by Fern.
-  - name: fernapi/fern-typescript
-    version: 0.0.197
-    generate: true
-    config:
-      mode: client-v2
+draft:
   - name: fernapi/fern-java
-    version: 0.0.109
-    generate: true
+    version: 0.0.115
+    mode: publish
+  - name: fernapi/fern-openapi
+    version: 0.0.8
     config:
-      mode: server
-
-release: # Publishes the generated code to a public registry (e.g. maven, npm, pypi).
-  - name: fernapi/fern-java
-    version: 0.0.109
-    generate: true
-    config:
-      mode: client
-    outputs:
+      format: yaml
+    mode: download-files
+    output-path: ./generated-openapi
+    
+release:
+  - name: fernapi/fern-typescript-sdk
+    version: 0.0.215
+    publishing:
+      npm:
+        package-name: '@fern-api/example'
+        token: ${NPM_TOKEN}
+    github:
+      repository: fern-api/example-node
+  - name: fernapi/fern-java-sdk
+    version: 0.0.117
+    publishing:
       maven:
-        url: https://s01.oss.sonatype.org/content/repositories/releases/
-        coordinate: <maven-group:maven-artifact>
-        username: ${MAVEN_USERNAME} # .env variable
-        password: ${MAVEN_PASSWORD}
+        coordinate: 'io.github.fern-api:example'
+    github:
+      repository: fern-api/example-java-sdk
