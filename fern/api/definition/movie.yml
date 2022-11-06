@@ -25,7 +25,7 @@ services:
 
 types:
   MovieId: 
-    alias: string 
+    type: string 
     docs: The unique identifier of a movie.
 
   Movie:
